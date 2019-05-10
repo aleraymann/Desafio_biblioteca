@@ -41,5 +41,8 @@ class UserSeeder extends Seeder
       DB::table('users')->insert(
         ["name"=>"Adele Barnes","email"=>"porttitor@pellentesque.ca","password"=>"SIR84VSV0NB"
         ]);
+        DB::table('users')->insert(
+         ["name"=>"Alessandro","email"=>"aleraymann@gmail.com","password"=>"123123123"
+         ]);
     }
 }

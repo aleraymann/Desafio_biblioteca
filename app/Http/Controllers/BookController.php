@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Book;
 use App\User;
+use App\Repositories\BookRepository;
+use App\Http\Requests\StoreBooksRequest;
 
 class BookController extends Controller
 {
@@ -17,7 +19,7 @@ class BookController extends Controller
 
   public function new()
   {
-  return $this->form("New Book");
+    return $this->form("New Book");
   }
 
   public function create(Request $dataFormulary){
@@ -30,37 +32,43 @@ class BookController extends Controller
     return redirect('/dashboard');
   }
 
+  public function store(BookRepository $repository, StoreBooksRequest $request)
+    {
+      $data = $request->all();
+      $book = $repository->create($data);
+      return redirect('/dashboard')->with('success', "Book Registered");
+    }
+
+
   public function save(Request $dataFormulary, Book $books, $id = null)
   {
-
-         if($id > 0)
-         {
-             $data = $books->find($id);
-             $data->update($dataFormulary->all());
-         }
-         else
-         {
-             $books->create($dataFormulary->all());
-         }
-
-         return redirect('/dashboard');
-   }
-
-   public function edit(Book $books, $id, User $users){
-    $books = Book::find($id);
-      if (isset($books)) {
-      $books->save();
-      }
-        $usersForm = $users->all();
-        return view('formBook', compact("books","id", "usersForm"));
+    if($id > 0)
+    {
+      $data = $books->find($id);
+      $data->update($dataFormulary->all());
     }
+    else
+    {
+      $books->create($dataFormulary->all());
+    }
+    return redirect('/dashboard');
+  }
+
+  public function edit(Book $books, $id, User $users){
+    $books = Book::find($id);
+    if (isset($books)) {
+      $books->save();
+    }
+    $usersForm = $users->all();
+    return view('formBook', compact("books","id", "usersForm"));
+  }
 
   public function delete($id, Book $books)
   {
-      $data = $books->find($id);
-      $data->destroy($id);
-      return redirect('/dashboard')
-              ->with('danger', "Book Deleted");
+    $data = $books->find($id);
+    $data->destroy($id);
+    return redirect('/dashboard')
+    ->with('danger', "Book Deleted");
   }
 
 }

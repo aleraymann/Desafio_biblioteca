@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Model\Book;
 use App\User;
 use App\Model\RentalBook;
+use App\Repositories\RentalBookRepository;
+use App\Http\Requests\StoreRentalBooksRequest;
 
 
 class RentalBookController extends Controller
@@ -19,7 +21,7 @@ class RentalBookController extends Controller
   }
   public function new()
   {
-  return $this->form("New Rental Book");
+    return $this->form("New Rental Book");
   }
 
   public function create(Request $dataFormulary){
@@ -32,44 +34,26 @@ class RentalBookController extends Controller
 
     return redirect('/dashboard');
   }
-
-  public function save(Request $dataFormulary, RentalBook $rentalbooks, $id = null)
-  {
-    try
-     {
-         if($id > 0)
-         {
-             $data = $rentalbooks->find($id);
-             $data->update($dataFormulary->all());
-         }
-         else
-         {
-             $rentalbooks->create($dataFormulary->all());
-         }
-
-         return redirect('/dashboard');
-     }
-     catch (Exception $e)
-     {
-         return $e;
-     }
-     catch(PDOException $e)
-     {
-         return $e->getMessage();
-     }
-   }
-
-   public function edit(RentalBook $rentalbooks, $id, User $users, Book $books){
-    $rentalbooks = RentalBook::find($id);
-      if (isset($rentalbooks)) {
-      $rentalbooks->save();
-      }
-        $usersForm = $users->all();
-        $booksForm = $books->all();
-        return view('formRentalBook', compact("rentalbooks","id", "usersForm","booksForm"));
+  public function store(RentalBookRepository $repository, StoreRentalBooksRequest $request)
+    {
+      $data = $request->all();
+      $rentalbook = $book->find($data->get('id_book'));
+      $book-> is_rent = true;
+      $book = $repository->create($data);
+      return redirect('/dashboard')->with('success', "Book Lended");
     }
 
-  public function delete($id, RentalBook $rentalbooks)
+  public function save(Request $dataFormulary, RentalBook $rentalbooks, Book $book)
+  {
+      $rentalbooks->create($dataFormulary->all());
+      $book = $book->find($dataFormulary->get('id_book'));
+      $book-> is_rent = true;
+      $book->save();
+
+      return redirect('/dashboard')->with('success', "Book Lended");
+  }
+
+  public function delete($id,RentalBook $rentalbooks, Book $book )
   {
       $data = $rentalbooks->find($id);
       $data->destroy($id);
