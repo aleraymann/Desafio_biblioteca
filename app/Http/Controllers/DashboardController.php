@@ -12,13 +12,13 @@ class DashboardController extends Controller
 {
   public function getBooks()
   {
-    $books = Book::all();
-    $rentalbooks = RentalBook::all();
+    $books = Book::paginate(5);
+    $rentalbooks = RentalBook::paginate(5);
     return view('dashboard', compact('books','rentalbooks'));
   }
   public function getRentalBooks()
   {
-    $rentalbooks = RentalBook::all();
+    $rentalbooks = RentalBook::paginate(5);
     return view('dashboard', compact('rentalbooks'));
   }
 }

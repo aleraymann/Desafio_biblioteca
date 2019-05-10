@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="card container">
-  <h2 class="card-title">Books</h2>
   @include('components.flash-message')
+  <br><a class="btn btn-primary col-2" href="/books/new"> Register Book </a><br>
+  <h2 class="card-title">Books Registered</h2>
   <table class="table table-bordered">
     <tr>
       <th >Title</th>
@@ -24,11 +25,14 @@
       @endforeach
     </tbody>
   </table>
-  <div class="card-header">
-    <a class="btn btn-primary" href="/books/new"> Register Book </a>
+  <div class="card-footer">
+    {{ $books->links() }}
   </div>
+
   <hr>
+
   <div class="card container">
+    <br><a class="btn btn-primary col-2" href="/rentalbooks/new"> Rent Book </a><br>
     <h2 class="card-title">Borrowed Books</h2>
     <table class="table table-bordered">
       <tr>
@@ -52,9 +56,8 @@
         @endforeach
       </tbody>
     </table>
-
-    <div class="card-header">
-      <a class="btn btn-primary" href="/rentalbooks/new"> Rent Book </a>
+    <div class="card-footer">
+      {{ $rentalbooks->links() }}
     </div>
 
     @endsection
