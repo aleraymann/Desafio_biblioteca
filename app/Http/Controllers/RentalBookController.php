@@ -35,29 +35,32 @@ class RentalBookController extends Controller
     return redirect('/dashboard');
   }
   public function store(RentalBookRepository $repository, StoreRentalBooksRequest $request)
-    {
-      $data = $request->all();
-      $rentalbook = $book->find($data->get('id_book'));
-      $book-> is_rent = true;
-      $book = $repository->create($data);
-      return redirect('/dashboard')->with('success', "Book Lended");
-    }
+  {
+    $data = $request->all();
+    $rentalbook = $book->find($data->get('id_book'));
+    $book-> is_rent = true;
+    $book = $repository->create($data);
+    return redirect('/dashboard')->with('success', "Book Lended");
+  }
 
   public function save(Request $dataFormulary, RentalBook $rentalbooks, Book $book)
   {
-      $rentalbooks->create($dataFormulary->all());
-      $book = $book->find($dataFormulary->get('id_book'));
-      $book-> is_rent = true;
-      $book->save();
+    $rentalbooks->create($dataFormulary->all());
+    $book = $book->find($dataFormulary->get('id_book'));
+    $book-> is_rent = true;
+    $book->save();
 
-      return redirect('/dashboard')->with('success', "Book Lended");
+    return redirect('/dashboard')->with('success', "Book Lended");
   }
 
   public function delete($id,RentalBook $rentalbooks, Book $book )
   {
-      $data = $rentalbooks->find($id);
-      $data->destroy($id);
-      return redirect('/dashboard')
-              ->with('danger', "Rental Book Deleted");
+  
+    $data = $rentalbooks->find($id);
+    $rent = $book->find($data->id_book);
+    $rent->is_rent = false;
+    $rent->save();
+    $data->destroy($id);
+    return redirect('/dashboard')->with('error', "Rental Book Deleted");
   }
 }

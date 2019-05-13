@@ -10,7 +10,7 @@ use App\Http\Requests\StoreBooksRequest;
 
 class BookController extends Controller
 {
-
+  
   public function form($title)
   {
     $usersForm = User::all();
@@ -33,11 +33,11 @@ class BookController extends Controller
   }
 
   public function store(BookRepository $repository, StoreBooksRequest $request)
-    {
-      $data = $request->all();
-      $book = $repository->create($data);
-      return redirect('/dashboard')->with('success', "Book Registered");
-    }
+  {
+    $data = $request->all();
+    $book = $repository->create($data);
+    return redirect('/dashboard')->with('success', "Book Registered");
+  }
 
 
   public function save(Request $dataFormulary, Book $books, $id = null)
@@ -68,7 +68,7 @@ class BookController extends Controller
     $data = $books->find($id);
     $data->destroy($id);
     return redirect('/dashboard')
-    ->with('danger', "Book Deleted");
+    ->with('error', "Book Deleted");
   }
 
 }

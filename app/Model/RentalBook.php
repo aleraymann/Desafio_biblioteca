@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class RentalBook extends Model
 {
-  protected $fillable = Array("id_user","id_book", "date_rental", "date_devolution");
+  protected $fillable = [
+    "id_user",
+    "id_book",
+    "date_rental",
+    "date_devolution"
+  ];
 
   public function user(){
     return $this->belongsTo('App\User', 'id_user');

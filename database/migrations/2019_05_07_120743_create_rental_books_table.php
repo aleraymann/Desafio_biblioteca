@@ -16,9 +16,9 @@ class CreateRentalBooksTable extends Migration
         Schema::create('rental_books', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('id_book');
-            $table->foreign('id_book')->references('id')->on('books');
+            $table->foreign('id_book')->references('id')->on('books')->onDelete('cascade');
             $table->date('date_rental');
             $table->date('date_devolution');
             $table->timestamps();

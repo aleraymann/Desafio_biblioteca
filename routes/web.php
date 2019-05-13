@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('auth.login');
+  return view('auth.login');
 
 });
 Auth::routes();
@@ -19,6 +19,7 @@ Route::get('/rentalbooks/edit/{id}', 'RentalBookController@edit');
 Route::get('/rentalbooks/delete/{id}', 'RentalBookController@delete');
 
 Route::get('/users', 'UserController@index');
+Route::get('/users/delete/{id}', 'UserController@delete');
 
 
 

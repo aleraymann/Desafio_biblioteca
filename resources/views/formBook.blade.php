@@ -2,14 +2,15 @@
 @section('content')
 
 <div class="card-body">
-  @if(!isset($id))
-  <form method="post" action="{{url("/books/save")}}">
-    @else
-    <form method="post" action="{{url("/books/save/$id")}}">
-      @endif
-      @csrf
-      <fieldset class="col-lg-5 offset-2">
-        <div class="form-row">
+  <h3>New Book</h3>
+  <div class="card-header">
+    @if(!isset($id))
+    <form method="post" action="{{url("/books/save")}}">
+      @else
+      <form method="post" action="{{url("/books/save/$id")}}">
+        @endif
+        @csrf
+        <div class=" card-content container">
           <div class="form-group col-lg-12">
             <label for="title">Title:</label>
             <input type="text" class="form-control" name="title" id="title" value="{{ isset($books->title) ? $books->title:'' }}" placeholder="Title">
@@ -28,18 +29,20 @@
             </select>
           </div>
         </div>
-        <button class="btn btn-outline-primary">Save</button>
-        <a href="/dashboard" class="btn btn-outline-danger">Cancel</a>
-      </fieldset>
-      {{csrf_field() }}
-    </form>
-    @if($errors->any())
-    <div class="card-footer">
-      @foreach($errors->all() as $i)
-      <div class="alert alert-danger" role="alert">
-        {{$i}}
+        <div class="card-footer">
+          <button class="btn btn-outline-primary">Save</button>
+          <a href="/dashboard" class="btn btn-outline-danger">Cancel</a>
+        </div>
+        {{csrf_field() }}
+      </form>
+      @if($errors->any())
+      <div class="card-footer container">
+        @foreach($errors->all() as $i)
+        <div class="alert alert-danger" role="alert">
+          {{$i}}
+        </div>
+        @endforeach
       </div>
-      @endforeach
     </div>
     @endif
     @endsection
