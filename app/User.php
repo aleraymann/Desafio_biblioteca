@@ -20,4 +20,5 @@ class User extends Authenticatable
   public function rentalbook(){
     return $this->hasMany('App\Model\RentalBook', 'id_user');
   }
+
 }

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="card-body">
+<div class="container">
     <h3>New Book</h3>
     <div class="card-header">
         @if(!isset($id))
@@ -37,6 +36,7 @@
                 </div>
                 {{csrf_field() }}
             </form>
+
             @if($errors->any())
             <div class="card-footer container">
                 @foreach($errors->all() as $i)
@@ -46,5 +46,6 @@
                 @endforeach
             </div>
     </div>
+
     @endif
     @endsection

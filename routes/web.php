@@ -27,4 +27,3 @@ Route::group(["prefix" => "rentalbooks"], function(){
 //Users
 Route::get('/users', 'UserController@index');
 Route::get('/users/delete/{id}', 'UserController@delete');
-

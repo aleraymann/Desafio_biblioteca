@@ -85,11 +85,5 @@ class UserController extends Controller
     return redirect('/users')
     ->with('info', "User Deleted");
   }
-
-  public function search(Request $request, User $user){
-    $dataForm = $request->all();
-    $users = $user->search($dataForm);
-    //dd($users);
-    return view('users', compact('users'));
-  }
+  
 }

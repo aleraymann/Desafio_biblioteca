@@ -1,45 +1,45 @@
 @extends('layouts.app')
 @section('content')
 <section>
-      <!-- Books -->
+    <!-- Books -->
     <div class="card container">
-        <div class="card container">
-            <br><a class="btn btn-primary col-2" href="/books/new"> Register Book </a><br>
-            <h2 class="card-title">Books Registered</h2>
-            <table class="table table-bordered">
-                @include('components.flash-message')
+        <br><a class="btn btn-primary col-2" href="/books/new"> Register Book </a><br>
+        <h2 class="card-title">Books Registered</h2>
+        <table class="table table-bordered table-hover">
+            @include('components.flash-message')
+            <tr>
+                <th>Title</th>
+                <th>Autor</th>
+                <th>Employee</th>
+                <th>Action</th>
+            </tr>
+            <tbody>
+                @foreach($books as $book)
                 <tr>
-                    <th>Title</th>
-                    <th>Autor</th>
-                    <th>Employee</th>
-                    <th>Action</th>
+                    <td> {{ $book->title }} </td>
+                    <td> {{ $book->author }} </td>
+                    <td> {{ $book->user->name }} </td>
+                    <td>
+                        <a href='{{url("/books/edit/$book->id")}}' class="btn btn-secondary">Edit</a>
+                        <a href='{{url("/books/delete/$book->id")}}' class="btn btn-danger"
+                            onclick="return confirm('Confirm Exclusion?')">Delete</a>
+                    </td>
                 </tr>
-                <tbody>
-                    @foreach($books as $book)
-                    <tr>
-                        <td> {{ $book->title }} </td>
-                        <td> {{ $book->author }} </td>
-                        <td> {{ $book->user->name }} </td>
-                        <td>
-                            <a href='{{url("/books/edit/$book->id")}}' class="btn btn-secondary">Edit</a>
-                            <a href='{{url("/books/delete/$book->id")}}' class="btn btn-danger"
-                                onclick="return confirm('Confirm Exclusion?')">Delete</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div class="card-footer">
-                {{ $books->links() }}
-            </div>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer container">
+        {{ $books->links() }}
+    </div>
 </section>
 <hr>
-  <!-- Rental Books -->
+<!-- Rental Books -->
 <section>
     <div class="card container">
         <br><a class="btn btn-primary col-2" href="/rentalbooks/new"> Rent Book </a><br>
         <h2 class="card-title">Borrowed Books</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
             @include('components.flash-message')
             <tr>
                 <th>Book</th>
@@ -63,9 +63,11 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="card-footer">
-            {{ $rentalbooks->links() }}
-        </div>
+    </div>
+    <div class="card-footer container">
+        {{ $rentalbooks->links() }}
+    </div>
 </section>
+<hr>
 
 @endsection
