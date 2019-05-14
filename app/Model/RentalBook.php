@@ -19,4 +19,5 @@ class RentalBook extends Model
   public function book(){
     return $this->belongsTo('App\Model\Book', 'id_book');
   }
+  
 }
