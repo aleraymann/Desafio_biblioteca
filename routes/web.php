@@ -5,21 +5,24 @@ Route::get('/', function () {
 
 });
 Auth::routes();
-
-//Books
-Route::get('/books/new', 'BookController@new');
-Route::post('/books/save/{id?}', 'BookController@store');
-Route::get('/books/edit/{id}', 'BookController@edit');
-Route::get('/books/delete/{id}', 'BookController@delete');
-
 //Dashboard
 Route::get('/dashboard', 'DashboardController@getBooks');
 
+//Books
+Route::group(["prefix" => "books"], function(){
+    Route::get('new', 'BookController@new');
+    Route::post('save/{id?}', 'BookController@store');
+    Route::get('edit/{id}', 'BookController@edit');
+    Route::get('delete/{id}', 'BookController@delete');
+}); 
+
 //RentalBooks
-Route::get('/rentalbooks/new', 'RentalBookController@new');
-Route::post('/rentalbooks/save/{id?}','RentalBookController@save');
-Route::get('/rentalbooks/edit/{id}', 'RentalBookController@edit');
-Route::get('/rentalbooks/delete/{id}', 'RentalBookController@delete');
+Route::group(["prefix" => "rentalbooks"], function(){
+    Route::get('new', 'RentalBookController@new');
+    Route::post('save/{id?}','RentalBookController@save');
+    Route::get('edit/{id}', 'RentalBookController@edit');
+    Route::get('delete/{id}', 'RentalBookController@delete')->middleware("auth");
+}); 
 
 //Users
 Route::get('/users', 'UserController@index');

@@ -8,7 +8,7 @@
         <div class="card-header">
             <div class="card-content container">
                 <div class="form-group col-lg-3">
-                    <h5>Book</h5>
+                    <h5>Books Available</h5>
                     <select name="id_book">
                         <option>Please select a book</option>
                         @foreach($booksForm as $book)
@@ -21,7 +21,7 @@
                     </select>
                 </div>
                 <div class="form-group col-lg-3">
-                    <h5>Employee</h5>
+                    <h5> Responsible Employee</h5>
                     <select name="id_user">
                         <option>Please select a employee</option>
                         @foreach($usersForm as $user)

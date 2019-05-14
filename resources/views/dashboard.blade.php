@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <section>
+      <!-- Books -->
     <div class="card container">
         <div class="card container">
             <br><a class="btn btn-primary col-2" href="/books/new"> Register Book </a><br>
@@ -33,6 +34,7 @@
             </div>
 </section>
 <hr>
+  <!-- Rental Books -->
 <section>
     <div class="card container">
         <br><a class="btn btn-primary col-2" href="/rentalbooks/new"> Rent Book </a><br>

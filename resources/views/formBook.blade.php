@@ -22,7 +22,7 @@
                             value="{{ isset($books->author) ? $books->author:'' }}" placeholder="Author">
                     </div>
                     <div class="form-group col-lg-3">
-                        <label for="">Employee</label>
+                        <label for="">Responsible Employee</label>
                         <select name="id_user">
                             <option>Select Employee</option>
                             @foreach($usersForm as $user)
