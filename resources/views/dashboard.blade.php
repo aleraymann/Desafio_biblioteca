@@ -8,6 +8,7 @@
         <table class="table table-bordered table-hover">
             @include('components.flash-message')
             <tr>
+                <th>Book Cover</th>
                 <th>Title</th>
                 <th>Autor</th>
                 <th>Employee</th>
@@ -16,6 +17,7 @@
             <tbody>
                 @foreach($books as $book)
                 <tr>
+                    <td><img class="img-fluid rounded" src="/storage/{{$book->image}}"></td>
                     <td> {{ $book->title }} </td>
                     <td> {{ $book->author }} </td>
                     <td> {{ $book->user->name }} </td>

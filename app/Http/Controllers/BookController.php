@@ -35,6 +35,7 @@ class BookController extends Controller
   public function store(BookRepository $repository, StoreBooksRequest $request)
   {
     $data = $request->all();
+    $data['image'] = $request->file('image')->store('images','public');
     $book = $repository->create($data);
     return redirect('/dashboard')->with('success', "Book Registered");
   }

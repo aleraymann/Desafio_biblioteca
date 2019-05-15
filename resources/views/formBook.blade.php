@@ -4,9 +4,9 @@
     <h3>New Book</h3>
     <div class="card-header">
         @if(!isset($id))
-        <form method="post" action="{{url("/books/save")}}">
+        <form method="post" action="{{url("/books/save")}}" enctype="multipart/form-data">
             @else
-            <form method="post" action="{{url("/books/save/$id")}}">
+            <form method="post" action="{{url("/books/save/$id")}}" enctype="multipart/form-data">
                 @endif
                 @csrf
                 <div class=" card-content container">
@@ -28,6 +28,13 @@
                             <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="file">Book Cover</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image" name="image">
+                            <label class="custom-file-label" for="image">Click here and choose your image</label>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

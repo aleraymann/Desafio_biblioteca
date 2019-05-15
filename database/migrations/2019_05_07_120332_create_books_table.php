@@ -17,6 +17,7 @@ class CreateBooksTable extends Migration
       $table->increments('id');
       $table->string('title');
       $table->string('author');
+      $table->string('image')->nullable();
       $table->unsignedBigInteger('id_user');
       $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
       $table->boolean('is_rent')->default(false);
