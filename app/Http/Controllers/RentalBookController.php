@@ -17,7 +17,7 @@ class RentalBookController extends Controller
   {
     $usersForm = User::all();
     $booksForm = Book::all();
-    return view("formRentalBook", compact(['usersForm','booksForm', 'title']));
+    return view("newRentalBook", compact(['usersForm','booksForm', 'title']));
   }
   public function new()
   {

@@ -14,7 +14,7 @@ class BookController extends Controller
   public function form($title)
   {
     $usersForm = User::all();
-    return view("formBook", compact(['usersForm', 'title']));
+    return view("newBook", compact(['usersForm', 'title']));
   }
 
   public function new()
@@ -61,7 +61,7 @@ class BookController extends Controller
       $books->save();
     }
     $usersForm = $users->all();
-    return view('formBook', compact("books","id", "usersForm"));
+    return view('newBook', compact("books","id", "usersForm"));
   }
 
   public function delete($id, Book $books)
