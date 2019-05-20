@@ -24,16 +24,6 @@ class RentalBookController extends Controller
     return $this->form("New Rental Book");
   }
 
-  public function create(Request $dataFormulary){
-    $rentalbooks = new RentalBook;
-    $rentalbooks->user = $dataFormulary->input('id_user');
-    $rentalbooks->book = $dataFormulary->input('id_book');
-    $rentalbook->date_rental = $dataFormulary->input('date_rental');
-    $rentalbook->date_devolution = $dataFormulary->input('date_devolution');
-    $rentalbooks->save();
-
-    return redirect('/dashboard');
-  }
   public function store(RentalBookRepository $repository, StoreRentalBooksRequest $request)
   {
     $data = $request->all();
