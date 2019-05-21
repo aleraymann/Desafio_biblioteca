@@ -22,16 +22,6 @@ class BookController extends Controller
     return $this->form("New Book");
   }
 
-  public function create(Request $dataFormulary){
-    $book = new Book;
-    $book->title = $dataFormulary->input('title');
-    $book->author = $dataFormulary->input('author');
-    $book->user = $dataFormulary->input('id_user');
-    $book->save();
-
-    return redirect('/dashboard');
-  }
-
   public function store(BookRepository $repository, StoreBooksRequest $request)
   {
     $data = $request->all();
