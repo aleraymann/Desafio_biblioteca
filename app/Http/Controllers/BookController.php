@@ -11,15 +11,10 @@ use App\Http\Requests\StoreBooksRequest;
 class BookController extends Controller
 {
   
-  public function form($title)
+  public function index()
   {
     $usersForm = User::all();
-    return view("newBook", compact(['usersForm', 'title']));
-  }
-
-  public function new()
-  {
-    return $this->form("New Book");
+    return view("newBook", compact(['usersForm']));
   }
 
   public function store(BookRepository $repository, StoreBooksRequest $request)
@@ -27,7 +22,7 @@ class BookController extends Controller
     $data = $request->all();
     $data['image'] = $request->file('image')->store('images','public');
     $book = $repository->create($data);
-    return redirect('/dashboard')->with('success', "Book Registered");
+    return redirect('dashboard')->with('success', "Book Registered");
   }
 
 
@@ -42,7 +37,7 @@ class BookController extends Controller
     {
       $books->create($dataFormulary->all());
     }
-    return redirect('/dashboard');
+    return redirect('dashboard');
   }
 
   public function edit(Book $books, $id, User $users){
@@ -62,15 +57,15 @@ class BookController extends Controller
           $data['image'] = $request->file('image')->store('images','public');
           $book = $repository->update($data,$id);
       }
-      return redirect('/dashboard')->with('warning', "Product Modified");
+      return redirect('dashboard')->with('warning', "Product Modified");
   }
 
 
-  public function delete($id, Book $books)
+  public function destroy($id, Book $books)
   {
     $data = $books->find($id);
     $data->destroy($id);
-    return redirect('/dashboard')
+    return redirect('dashboard')
     ->with('success', "Book Deleted");
   }
 

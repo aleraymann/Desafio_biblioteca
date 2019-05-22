@@ -15,10 +15,10 @@ class User extends Authenticatable
   ];
 
   public function book(){
-    return $this->hasMany('App\Model\Book', 'id_user');
+    return $this->hasMany('App\Model\Book', 'owner_id');
   }
   public function rentalBooks(){
-    return $this->hasMany('App\Model\RentalBook', 'id_user');
+    return $this->hasMany('App\Model\RentalBook', 'renter_id');
   }
 
 }

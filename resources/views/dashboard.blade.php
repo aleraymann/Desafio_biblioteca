@@ -5,7 +5,7 @@
   <div class="card container">
     <br><a class="btn btn-primary col-2" href="/books/new"> Register Book </a><br>
     <h2 class="card-title">Books Registered</h2>
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover text-center">
       @include('components.flash-message')
       <tr>
         <th>Book Cover</th>
@@ -37,11 +37,11 @@
   </section>
   <hr>
   <!-- Rental Books -->
-  <section>
+  <section id="rental">
     <div class="card container">
       <br><a class="btn btn-primary col-2" href="/rentalbooks/new"> Rent Book </a><br>
       <h2 class="card-title">Borrowed Books</h2>
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover text-center">
         @include('components.flash-message')
         <tr>
           <th>Book</th>

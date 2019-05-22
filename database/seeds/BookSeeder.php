@@ -22,7 +22,7 @@ class BookSeeder extends Seeder
         Book::create([
        "title" => $faker->word(), 
        "author" => $faker->name(), 
-       "id_user"=>$faker->numberBetween($min = 1, $max = 20)
+       "owner_id"=>$faker->numberBetween($min = 1, $max = 20)
        ]);
       }
      

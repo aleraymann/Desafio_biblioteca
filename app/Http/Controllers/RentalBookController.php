@@ -13,26 +13,21 @@ use App\Http\Requests\StoreRentalBooksRequest;
 class RentalBookController extends Controller
 {
 
-  public function form($title)
+  public function index()
   {
     $usersForm = User::all();
-    
     $booksForm = Book::all();
-    return view("newRentalBook", compact(['usersForm','booksForm', 'title']));
-  }
-  public function new()
-  {
-    return $this->form("New Rental Book");
+    return view("newRentalBook", compact(['usersForm','booksForm']));
   }
 
   public function store(Request $dataFormulary, RentalBook $rentalbooks, Book $book)
   {
     $rentalbooks->create($dataFormulary->all());
-    $book = $book->find($dataFormulary->get('id_book'));
+    $book = $book->find($dataFormulary->get('book_id'));
     $book-> is_rent = true;
     $book->save();
 
-    return redirect('/dashboard')->with('success', "Book Lended");
+    return redirect('dashboard')->with('success', "Book Lended");
   }
 
   public function save()
@@ -40,14 +35,14 @@ class RentalBookController extends Controller
     //
   }
 
-  public function delete($id,RentalBook $rentalbooks, Book $book )
+  public function destroy($id,RentalBook $rentalbooks, Book $book )
   {
   
     $data = $rentalbooks->find($id);
-    $rent = $book->find($data->id_book);
+    $rent = $book->find($data->book_id);
     $rent->is_rent = false;
     $rent->save();
     $data->destroy($id);
-    return redirect('/dashboard')->with('success', "Rental Book Deleted");
+    return redirect('dashboard')->with('success', "Rental Book Deleted");
   }
 }
