@@ -10,10 +10,10 @@ use App\User;
 
 class DashboardController extends Controller
 {
-  public function getBooks()
-  {
-    $books = Book::paginate(5, ['*'], 'books');
-    $rentalbooks = RentalBook::paginate(5, ['*'], 'rentalbooks');
-    return view('dashboard', compact('books','rentalbooks'));
-  }
+    public function getBooks()
+    {
+        $books = Book::paginate(5, ['*'], 'books');
+        $rentalbooks = RentalBook::paginate(5, ['*'], 'rentalbooks');
+        return view('dashboard', compact('books', 'rentalbooks'));
+    }
 }

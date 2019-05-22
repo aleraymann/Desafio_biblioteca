@@ -14,7 +14,7 @@ class RenameColumnsBook extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->renameColumn('id_user','owner_id');
+            $table->renameColumn('id_user', 'owner_id');
         });
     }
 
@@ -26,7 +26,7 @@ class RenameColumnsBook extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->renameColumn('owner_id','id_user');
+            $table->renameColumn('owner_id', 'id_user');
         });
     }
 }

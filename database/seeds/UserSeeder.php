@@ -13,17 +13,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('users')->truncate();
+        DB::table('users')->truncate();
 
-      $faker =Faker::create();
+        $faker =Faker::create();
 
-      foreach(range(1,30) as $i){
-        User::create([
-       "name" => $faker->name(), 
-       "email" => $faker->email(), 
+        foreach (range(1, 30) as $i) {
+            User::create([
+       "name" => $faker->name(),
+       "email" => $faker->email(),
        "password"=>bcrypt($faker->word())
        ]);
-      }
-     
+        }
     }
 }

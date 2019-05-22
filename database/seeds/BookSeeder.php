@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 use App\Model\Book;
 use Faker\Factory as Faker;
 
-
 class BookSeeder extends Seeder
 {
     /**
@@ -14,17 +13,16 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('books')->truncate();
+        DB::table('books')->truncate();
 
-      $faker =Faker::create();
+        $faker =Faker::create();
 
-      foreach(range(1,30) as $i){
-        Book::create([
-       "title" => $faker->word(), 
-       "author" => $faker->name(), 
+        foreach (range(1, 30) as $i) {
+            Book::create([
+       "title" => $faker->word(),
+       "author" => $faker->name(),
        "owner_id"=>$faker->numberBetween($min = 1, $max = 20)
        ]);
-      }
-     
+        }
     }
 }
