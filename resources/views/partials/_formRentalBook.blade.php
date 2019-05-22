@@ -4,7 +4,7 @@
         <div class="card-content container">
             <div class="form-group col-lg-3">
                 <h5>Books Available</h5>
-                <select name="id_book">
+                <select name="book_id">
                     <option>Please select a book</option>
                     @foreach($booksForm as $book)
                     @if($book->is_rent !=true)
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group col-lg-3">
                 <h5> Renter</h5>
-                <select name="id_user">
+                <select name="renter_id">
                     <option>Please select a employee</option>
                     @foreach($usersForm as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>

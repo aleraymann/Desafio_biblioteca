@@ -17,7 +17,7 @@
             </div>
             <div class="form-group col-lg-3">
                 <label for="">Owner</label>
-                <select name="id_user">
+                <select name="owner_id">
                     <option>Select Employee</option>
                     @foreach($usersForm as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>

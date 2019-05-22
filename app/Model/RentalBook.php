@@ -6,18 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class RentalBook extends Model
 {
-  protected $fillable = [
-    "id_user",
-    "id_book",
-    "date_rental",
-    "date_devolution"
-  ];
+    protected $fillable = [
+        'renter_id',
+        'book_id',
+        'date_rental',
+        'date_devolution',
+    ];
 
-  public function user(){
-    return $this->belongsTo('App\User', 'id_user');
-  }
-  public function book(){
-    return $this->belongsTo('App\Model\Book', 'id_book');
-  }
-
+    public function renter()
+    {
+        return $this->belongsTo('App\User', 'renter_id');
+    }
+    public function book()
+    {
+        return $this->belongsTo('App\Model\Book', 'book_id');
+    }
 }
