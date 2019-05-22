@@ -11,7 +11,7 @@
                 <th>Book Cover</th>
                 <th>Title</th>
                 <th>Autor</th>
-                <th>Employee</th>
+                <th>Owner</th>
                 <th>Action</th>
             </tr>
             <tbody>
@@ -45,7 +45,7 @@
             @include('components.flash-message')
             <tr>
                 <th>Book</th>
-                <th>User</th>
+                <th>Renter</th>
                 <th>Loan Date</th>
                 <th>Devolution Date</th>
                 <th>Action</th>

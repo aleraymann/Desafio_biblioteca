@@ -83,7 +83,7 @@ class UserController extends Controller
     $data = $users->find($id);
     $data->destroy($id);
     return redirect('/users')
-    ->with('info', "User Deleted");
+    ->with('success', "User Deleted");
   }
   
 }

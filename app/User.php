@@ -17,7 +17,7 @@ class User extends Authenticatable
   public function book(){
     return $this->hasMany('App\Model\Book', 'id_user');
   }
-  public function rentalbook(){
+  public function rentalBooks(){
     return $this->hasMany('App\Model\RentalBook', 'id_user');
   }
 

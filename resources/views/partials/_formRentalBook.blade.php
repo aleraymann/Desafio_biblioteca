@@ -1,4 +1,4 @@
-<form method="post" action="{{url("/rentalbooks/save")}}">
+<form method="post" action="{{ route('storeRental') }}">
     @csrf
     <div class="card-header">
         <div class="card-content container">
@@ -16,7 +16,7 @@
                 </select>
             </div>
             <div class="form-group col-lg-3">
-                <h5> Responsible Employee</h5>
+                <h5> Renter</h5>
                 <select name="id_user">
                     <option>Please select a employee</option>
                     @foreach($usersForm as $user)
@@ -37,7 +37,7 @@
         </div>
         <div class="card-footer">
             <button class="btn btn-outline-primary">Save</button>
-            <a href="/dashboard" class="btn btn-outline-danger">Cancel</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-outline-danger">Cancel</a>
         </div>
         {{csrf_field() }}
 </form>

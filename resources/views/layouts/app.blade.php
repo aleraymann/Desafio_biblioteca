@@ -52,18 +52,18 @@
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/dashboard"><b>Dashboard</b></a>
+                    <a class="nav-link" href="{{ route('dashboard') }}"><b>Dashboard</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/users"><b>Employees</b></a>
+                    <a class="nav-link active" href="{{ route('users') }}"><b>Employees</b></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" id="navbarDropdown"
                         data-toggle="dropdown"><b>Books</b></a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="nav-item dropdown-item" href="{{ url('/books/new') }}">
+                        <a class="nav-item dropdown-item" href="{{route('newBook')}}">
                             New Book</a>
-                        <a class="nav-item dropdown-item" href="{{ url('/rentalbooks/new') }}"> Lend Book</a>
+                        <a class="nav-item dropdown-item" href="{{route('newRental')}}"> Lend Book</a>
                     </div>
                 </li>
             </ul>

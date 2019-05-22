@@ -16,6 +16,7 @@ class RentalBookController extends Controller
   public function form($title)
   {
     $usersForm = User::all();
+    
     $booksForm = Book::all();
     return view("newRentalBook", compact(['usersForm','booksForm', 'title']));
   }
@@ -24,16 +25,7 @@ class RentalBookController extends Controller
     return $this->form("New Rental Book");
   }
 
-  public function store(RentalBookRepository $repository, StoreRentalBooksRequest $request)
-  {
-    $data = $request->all();
-    $rentalbook = $book->find($data->get('id_book'));
-    $book-> is_rent = true;
-    $book = $repository->create($data);
-    return redirect('/dashboard')->with('success', "Book Lended");
-  }
-
-  public function save(Request $dataFormulary, RentalBook $rentalbooks, Book $book)
+  public function store(Request $dataFormulary, RentalBook $rentalbooks, Book $book)
   {
     $rentalbooks->create($dataFormulary->all());
     $book = $book->find($dataFormulary->get('id_book'));
@@ -41,6 +33,11 @@ class RentalBookController extends Controller
     $book->save();
 
     return redirect('/dashboard')->with('success', "Book Lended");
+  }
+
+  public function save()
+  {
+    //
   }
 
   public function delete($id,RentalBook $rentalbooks, Book $book )
@@ -51,6 +48,6 @@ class RentalBookController extends Controller
     $rent->is_rent = false;
     $rent->save();
     $data->destroy($id);
-    return redirect('/dashboard')->with('error', "Rental Book Deleted");
+    return redirect('/dashboard')->with('success', "Rental Book Deleted");
   }
 }

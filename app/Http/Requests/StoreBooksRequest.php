@@ -26,7 +26,7 @@ class StoreBooksRequest extends FormRequest
     return [
       'title'=> 'required|string|min:2|max:30',
       'author'=> 'required|string|min:2|max:60',
-      'id_user'=> 'required'
+      'id_user'=> 'required|integer|min:0'
     ];
   }
 }

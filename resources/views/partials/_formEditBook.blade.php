@@ -1,22 +1,18 @@
-@if(!isset($id))
-<form method="post" action="{{url("/books/save")}}" enctype="multipart/form-data">
-    @else
-    <form method="post" action="{{url("/books/save/$id")}}" enctype="multipart/form-data">
-        @endif
+<form method="post" action="{{url("/books/save/$id")}}" enctype="multipart/form-data">
         @csrf
         <div class=" card-content container">
             <div class="form-group col-lg-12">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" name="title" id="title"
-                    value="{{ isset($books->title) ? $books->title:'' }}" placeholder="Title">
+                    value="{{ $books->title }}">
             </div>
             <div class="form-group col-lg-12">
                 <label for="author">Author:</label>
                 <input type="text" class="form-control" name="author" id="author"
-                    value="{{ isset($books->author) ? $books->author:'' }}" placeholder="Author">
+                    value="{{ $books->author }}">
             </div>
             <div class="form-group col-lg-3">
-                <label for="">Responsible Employee</label>
+                <label for="">Owner</label>
                 <select name="id_user">
                     <option>Select Employee</option>
                     @foreach($usersForm as $user)

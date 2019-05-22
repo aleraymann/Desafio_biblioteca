@@ -6,21 +6,19 @@
     <table class="table table-bordered table-hover">
         @include('components.flash-message')
         <tr>
-            <th>Id </th>
             <th>Name</th>
             <th>Email</th>
             <th>Registered in</th>
             <th>Options</th>
         </tr>
         <tbody>
-            @foreach($users as $i)
+            @foreach($users as $user)
             <tr>
-                <td>{{$i->id}}</td>
-                <td>{{$i->name}}</td>
-                <td>{{$i->email}}</td>
-                <td>{{$i->created_at}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->created_at}}</td>
                 <td class="col-lg-8">
-                    <a href='{{url("/users/delete/$i->id")}}' class="btn btn-outline-danger"
+                    <a href='{{url("/users/delete/$user->id")}}' class="btn btn-outline-danger"
                         onclick="return confirm('Confirm Exclusion?')">Delete</a>
                 </td>
             </tr>
