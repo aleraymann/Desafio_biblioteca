@@ -3,7 +3,7 @@
 <section>
     <!-- Books -->
     <div class="card container">
-        <br><a class="btn btn-primary col-2" href="/books/new"> Register Book </a><br>
+        <br><a class="btn btn-primary col-2" href="{{ route('newBook') }}"> Register Book </a><br>
         <h2 class="card-title">Books Registered</h2>
         <table class="table table-bordered table-hover text-center">
             @include('components.flash-message')
@@ -22,8 +22,8 @@
                     <td> {{ $book->author }} </td>
                     <td> {{ $book->owner->name }} </td>
                     <td>
-                        <a href='{{url("/books/edit/$book->id")}}' class="btn btn-secondary">Edit</a>
-                        <a href='{{url("/books/delete/$book->id")}}' class="btn btn-danger"
+                        <a href="{{ route('editBook',$book->id) }}" class="btn btn-secondary">Edit</a>
+                        <a href="{{ route('deleteBook',$book->id) }}" class="btn btn-danger"
                             onclick="return confirm('Confirm Exclusion?')">Delete</a>
                     </td>
                 </tr>
@@ -39,7 +39,7 @@
 <!-- Rental Books -->
 <section id="rental">
     <div class="card container">
-        <br><a class="btn btn-primary col-2" href="/rentalbooks/new"> Rent Book </a><br>
+        <br><a class="btn btn-primary col-2" href="{{ route('newRental') }}"> Rent Book </a><br>
         <h2 class="card-title">Borrowed Books</h2>
         <table class="table table-bordered table-hover text-center">
             @include('components.flash-message')
@@ -58,7 +58,7 @@
                     <td> {{ $rentalbook->date_rental }} </td>
                     <td> {{ $rentalbook->date_devolution }} </td>
                     <td>
-                        <a href='{{url("/rentalbooks/delete/$rentalbook->id")}}' class="btn btn-danger"
+                        <a href="{{ route('deleteRental',$rentalbook->id) }}" class="btn btn-danger"
                             onclick="return confirm('Confirm Exclusion?')">Delete</a>
                     </td>
                 </tr>

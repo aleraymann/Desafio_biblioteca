@@ -19,7 +19,7 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->created_at}}</td>
                 <td class="">
-                    <a href='{{url("/users/delete/$user->id")}}' class="btn btn-outline-danger"
+                    <a href="{{route('deleteUsers',$user->id)}}" class="btn btn-outline-danger"
                         onclick="return confirm('Confirm Exclusion?')">Delete</a>
                 </td>
             </tr>
